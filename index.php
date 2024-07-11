@@ -28,3 +28,5 @@ if ($result->num_rows > 0) {
 
 include 'templates/footer.php';
 ?>
+
+
