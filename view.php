@@ -4,27 +4,27 @@ include 'templates/header.php';
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM Peliculas WHERE id=$id";
+$sql = "SELECT * FROM at_movies WHERE id=$id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
-$sql_genero = "SELECT nombre FROM Generos WHERE id=" . $row["genero_id"];
-$result_genero = $conn->query($sql_genero);
-$genero = $result_genero->fetch_assoc();
+$sql_genre = "SELECT name FROM at_genres WHERE id=" . $row["genre_id"];
+$result_genre = $conn->query($sql_genre);
+$genre = $result_genre->fetch_assoc();
 
-$sql_director = "SELECT nombre FROM Directores WHERE id=" . $row["director_id"];
+$sql_director = "SELECT name FROM at_directors WHERE id=" . $row["director_id"];
 $result_director = $conn->query($sql_director);
 $director = $result_director->fetch_assoc();
 ?>
 
-<h2>Detalles de la Película</h2>
-<p><strong>Título:</strong> <?php echo $row["titulo"]; ?></p>
-<p><strong>Descripción:</strong> <?php echo $row["descripcion"]; ?></p>
-<p><strong>Fecha de Estreno:</strong> <?php echo $row["fecha_estreno"]; ?></p>
-<p><strong>Duración:</strong> <?php echo $row["duracion"]; ?> minutos</p>
-<p><strong>Idioma:</strong> <?php echo $row["idioma"]; ?></p>
-<p><strong>Género:</strong> <?php echo $genero["nombre"]; ?></p>
-<p><strong>Director:</strong> <?php echo $director["nombre"]; ?></p>
+<h2>Movie Details</h2>
+<p><strong>Title:</strong> <?php echo $row["title"]; ?></p>
+<p><strong>Description:</strong> <?php echo $row["description"]; ?></p>
+<p><strong>Release Date:</strong> <?php echo $row["release_date"]; ?></p>
+<p><strong>Duration:</strong> <?php echo $row["duration"]; ?> minutes</p>
+<p><strong>Language:</strong> <?php echo $row["language"]; ?></p>
+<p><strong>Genre:</strong> <?php echo $genre["name"]; ?></p>
+<p><strong>Director:</strong> <?php echo $director["name"]; ?></p>
 
 <?php
 include 'templates/footer.php';

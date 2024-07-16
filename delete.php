@@ -1,15 +1,27 @@
 <?php
 include 'config/db.php';
+include 'templates/header.php';
 
-$id = $_GET["id"];
+// Verificar si se ha pasado un ID válido
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
 
-$sql = "DELETE FROM Peliculas WHERE id=$id";
+    // Preparar la consulta SQL para actualizar el estado a 'inactivo'
+    $sql = "UPDATE at_movies SET status = 'inactive' WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Película eliminada exitosamente.";
+    if ($stmt->execute()) {
+        echo "Movie marked as inactive successfully.";
+    } else {
+        echo "Error marking the movie as inactive: " . $conn->error;
+    }
+
+    $stmt->close();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Invalid ID.";
 }
 
-header("Location: index.php");
+$conn->close();
+include 'templates/footer.php';
 ?>
