@@ -19,7 +19,7 @@
     <nav>
         <a href="index.php">Inicio</a>
         <a href="add.php">Agregar Película</a>
-        <a href="add_genero.php">Agregar Genero</a>
+        <a href="add_genre.php">Agregar Genero</a>
         <a href="add_director.php">Agregar Director</a>
     </nav>
 </header>
