@@ -17,9 +17,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             duration=$duracion, language='$idioma', genre_id=$genero_id, director_id=$director_id WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Movie updated successfully.";
+        echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Movie updated successfully.',
+                }).then(function() {
+                    window.location = 'index.php';
+                });
+              </script>";
     } else {
-        echo "Error updating movie: " . $conn->error;
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error: " . $conn->error . "',
+                });
+              </script>";
     }
 }
 
@@ -65,7 +79,9 @@ $result_directors = $conn->query($sql_directors);
         <?php } ?>
     </select><br>
     
-    <input type="submit" value="Update Movie">
+    <button type="submit" class="btn btn-primary">
+        <span class="material-icons">edit</span> Update Movie
+    </button>
 </form>
 
 <?php

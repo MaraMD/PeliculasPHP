@@ -12,14 +12,36 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        echo "Movie marked as inactive successfully.";
+        echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Movie marked as inactive successfully.',
+                }).then(function() {
+                    window.location = 'index.php';
+                });
+              </script>";
     } else {
-        echo "Error marking the movie as inactive: " . $conn->error;
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error marking movie as inactive: " . $conn->error . "',
+                });
+              </script>";
     }
 
     $stmt->close();
 } else {
-    echo "Invalid ID.";
+    echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Invalid ID.',
+            }).then(function() {
+                window.location = 'index.php';
+            });
+          </script>";
 }
 
 $conn->close();
