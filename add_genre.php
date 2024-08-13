@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container">
     <h2 class="my-4">Add New Genre</h2>
-    <form method="POST" action="add_genero.php">
+    <form method="POST" action="add_genre.php">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" name="name" required>

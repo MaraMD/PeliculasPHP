@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "title": "Inception",
+        "description": "A mind-bending thriller",
+        "release_date": "2010-07-16",
+        "duration": 148,
+        "language": "English",
+        "genre_id": 1,
+        "director_id": 1,
+        "status": "activo"
+    },
+    {
+        "id": 2,
+        "title": "Interstellar",
+        "description": "A journey beyond the stars",
+        "release_date": "2014-11-07",
+        "duration": 169,
+        "language": "English",
+        "genre_id": 2,
+        "director_id": 1,
+        "status": "activo"
+    }
+]
